@@ -25,4 +25,14 @@ export const MENSAJES = {
 
   horaInvalida: 'Hora inválida',
   recordatoriosIguales: 'Los dos recordatorios no pueden tener la misma hora',
+
+  unaCategoriaComoMinimo: 'Debe existir al menos una categoría',
+  noSePudoGuardar: 'No se pudo guardar. Sus datos anteriores siguen intactos.',
+  tareaGuardada: 'Tarea guardada',
+  superposicion: (titulo: string, inicio: string, fin: string, otras: number) =>
+    `Esta tarea comparte horario con '${titulo}' (${inicio}–${fin})${otras > 0 ? ` y ${otras} más` : ''}`,
+  cronometroPausado: (titulo: string) => `Se pausó el cronómetro de '${titulo}'`,
+  pausaAutomatica: (titulo: string) => `El cronómetro de '${titulo}' se pausó solo al terminar su jornada`,
+  tareasFueraDeHorario: (cantidad: number) =>
+    `${cantidad} tareas quedan fuera de su nuevo horario. Ajústelas cuando las edite.`,
 } as const;
