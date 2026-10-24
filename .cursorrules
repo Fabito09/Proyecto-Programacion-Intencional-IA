@@ -1,0 +1,90 @@
+# Reglas de proyecto — Mi Semana
+
+Sos el Sous Chef de este proyecto: ejecutás lo que dice la especificación.
+Las decisiones de producto y arquitectura las toma el equipo (Head Chef).
+
+## 1. Fuente de verdad
+
+- `requirements.md` es la única fuente de verdad del comportamiento.
+- `src/domain/modelo.ts` es la única fuente de verdad del modelo de datos.
+- Antes de escribir código, identificá qué requisito(s) implementás
+  (ej. `RN-01`, `RF-TAR-03`) y citá el ID en el mensaje de commit y en un
+  comentario corto sobre la función que lo implementa.
+- Si una tarea pedida no está cubierta por `requirements.md`, o la
+  especificación es ambigua o contradictoria: DETENETE y preguntá. No asumas.
+- Prohibido agregar funcionalidades, pantallas, campos, dependencias o
+  "mejoras" que no estén en la especificación, aunque parezcan útiles.
+- Prohibidos los parches: no arregles un síntoma con un caso especial
+  (`if` para un valor puntual, `try/catch` que silencia errores, `setTimeout`
+  para esquivar una condición de carrera). Corregí la causa o reportala.
+
+## 2. Stack permitido (cerrado)
+
+- TypeScript en modo `strict`, empaquetado con Vite.
+- HTML + CSS + TypeScript sin framework (sin React, Vue, Angular, jQuery).
+- Persistencia: únicamente `localStorage`, clave `mi-semana:v1`.
+- APIs del navegador permitidas: DOM, `localStorage`, `Notification`,
+  `crypto.randomUUID`, `Intl`/`Date`.
+- Dependencias de producción: ninguna. Dependencias de desarrollo: solo
+  `vite`, `typescript` y `vitest`. Cualquier otra requiere aprobación previa.
+- Prohibido: backend, servicios externos, CDNs, service workers, push,
+  librerías de fechas o de UI.
+
+## 3. Arquitectura
+
+```
+src/
+  domain/     Tipos, validaciones y reglas de negocio. Funciones puras:
+              no tocan el DOM, ni localStorage, ni el reloj (reciben "hoy"
+              y "ahora" como parámetro).
+  storage/    Lectura y escritura de EstadoPersistido en localStorage.
+  services/   Orquesta dominio + storage (casos de uso) y el planificador
+              de recordatorios.
+  ui/         Renderizado y eventos del DOM. No contiene reglas de negocio.
+  styles/     Hojas CSS.
+  main.ts     Punto de entrada: solo conecta las capas.
+tests/        Pruebas de vitest para domain/ y services/.
+```
+
+- Las dependencias van en una sola dirección: `ui → services → domain`,
+  `services → storage → domain`. `domain` no importa nada del proyecto
+  salvo otros archivos de `domain`.
+- Las validaciones viven solo en `domain/`. La UI muestra el resultado, no
+  vuelve a validar.
+
+## 4. Convenciones de código
+
+- Identificadores en español sin tildes, igual que en `requirements.md`
+  (`Tarea`, `horaInicio`, `validarTarea`). Variables y funciones en
+  camelCase; tipos e interfaces en PascalCase; constantes de módulo en
+  MAYUSCULAS_CON_GUION_BAJO.
+- Prohibido `any`, `as` para forzar tipos de datos externos sin validarlos,
+  y `// @ts-ignore`.
+- Las validaciones devuelven un resultado tipado
+  (`{ ok: true, valor } | { ok: false, errores }`); no lanzan excepciones
+  para errores de usuario.
+- Una función = una responsabilidad. Si su nombre necesita "y", dividila.
+- Nada de lógica repetida: si dos lugares calculan lo mismo (ej. la semana
+  de una fecha, el título normalizado), extraelo a `domain/`.
+- Prohibido `innerHTML` con datos del usuario; usar `textContent` o crear
+  nodos.
+- Prohibido JavaScript o estilos en línea dentro del HTML.
+- Textos visibles en español, exactamente como aparecen en
+  `requirements.md` cuando el requisito los cita.
+
+## 5. Comportamiento no alterado (Unchanged Behavior)
+
+- Ante una entrada inválida o un error de guardado, el estado en memoria,
+  `localStorage` y la interfaz deben quedar exactamente como estaban antes
+  de la acción. Solo se agrega el mensaje de error.
+- Al modificar código existente, no cambies comportamiento que no esté
+  relacionado con el requisito que estás implementando.
+
+## 6. Calidad
+
+- Cada regla `RN-xx` y cada caso de borde `CB-xx` debe tener al menos una
+  prueba en `tests/`.
+- `npm run build` y `npm test` deben pasar antes de dar una tarea por
+  terminada.
+- Al terminar, resumí: qué requisitos implementaste, qué archivos tocaste y
+  qué dudas de la especificación encontraste.

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Semana — Nueva tarea</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+a{color:#9aa4ff}a:hover{color:#c3c9ff}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: #0a0a0a; color: #fff; font-family: Inter, system-ui, sans-serif; padding: 48px 24px; display: flex; justify-content: center; align-items: flex-start;">
+<form role="dialog" aria-labelledby="nt-titulo-dialogo" style="width: 100%; max-width: 600px; box-sizing: border-box; background: #000; border: 1px solid #2a2a2a; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+<h1 id="nt-titulo-dialogo" style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em;">Nueva tarea</h1>
+<a href="04-semana.html" aria-label="Cerrar" style="width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #b5b5b5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="nt-titulo" style="font-size: 14px; color: #b5b5b5;">Título</label>
+<input id="nt-titulo" type="text" value="Informe semanal" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #fff; padding: 8px 0;">
+<div role="status" style="display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: #15172e; border: 1px solid #343a7a;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9aa4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px;"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2M9 2h6"></path></svg>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #e2e4ff;">Las últimas 3 veces le tomó en promedio <strong>1 h 20 min</strong>. Ya lo pusimos como meta; puede cambiarlo.</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="nt-fecha" style="font-size: 14px; color: #b5b5b5;">Fecha</label>
+<input id="nt-fecha" type="date" value="2026-10-26" style="font: inherit; font-size: 16px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; color-scheme: dark;">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="nt-hora" style="font-size: 14px; color: #b5b5b5;">Hora de inicio</label>
+<input id="nt-hora" type="time" value="16:30" aria-invalid="true" aria-describedby="nt-hora-error" style="font: inherit; font-size: 16px; color: #fff; background: transparent; border: 0; border-bottom: 2px solid #ff6b6b; padding: 8px 0; color-scheme: dark;">
+<span id="nt-hora-error" style="font-size: 13px; color: #ff6b6b; line-height: 1.4;">La tarea debe quedar entre las 08:00 y las 17:00.</span>
+</div>
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0;">
+<legend style="font-size: 14px; color: #b5b5b5; padding: 0; margin-bottom: 8px;">¿En cuánto tiempo se propone terminarla?</legend>
+<div style="display: flex; gap: 16px; align-items: flex-end;">
+<label style="display: flex; align-items: baseline; gap: 8px; font-size: 14px; color: #8a8a8a;"><input type="number" min="0" max="24" value="1" aria-label="Horas" style="width: 64px; font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0;">h</label>
+<label style="display: flex; align-items: baseline; gap: 8px; font-size: 14px; color: #8a8a8a;"><input type="number" min="0" max="59" value="20" aria-label="Minutos" style="width: 64px; font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0;">min</label>
+<span style="font-size: 12px; font-weight: 600; color: #9aa4ff; padding-bottom: 10px;">Sugerida</span>
+</div>
+</fieldset>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<fieldset style="border: 0; margin: 0; padding: 0;">
+<legend style="font-size: 14px; color: #b5b5b5; padding: 0; margin-bottom: 10px;">Prioridad</legend>
+<div style="display: flex; border: 1px solid #3a3a3a; border-radius: 999px; overflow: hidden;">
+<label style="flex: 1; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #d0d0d0;"><input type="radio" name="np" style="position: absolute; opacity: 0;">Alta</label>
+<label style="flex: 1; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #000; background: #fff;"><input type="radio" name="np" checked style="position: absolute; opacity: 0;">Media</label>
+<label style="flex: 1; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #d0d0d0;"><input type="radio" name="np" style="position: absolute; opacity: 0;">Baja</label>
+</div>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<label for="nt-cat" style="font-size: 14px; color: #b5b5b5;">Categoría</label>
+<select id="nt-cat" style="font: inherit; font-size: 15px; height: 44px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px; padding: 0 12px;"><option>Reportes</option><option>Clientes</option><option>Administrativo</option><option>General</option></select>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="nt-desc" style="font-size: 14px; color: #b5b5b5;">Descripción (opcional)</label>
+<textarea id="nt-desc" rows="3" style="font: inherit; font-size: 15px; color: #fff; background: #0e0e0e; border: 1px solid #2a2a2a; border-radius: 10px; padding: 10px 12px; resize: vertical;"></textarea>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
+<a href="04-semana.html" style="height: 48px; display: inline-flex; align-items: center; padding: 0 22px; border-radius: 999px; color: #b5b5b5; font-size: 16px; font-weight: 500; text-decoration: none;">Cancelar</a>
+<button type="button" style="font: inherit; font-size: 16px; font-weight: 600; height: 48px; padding: 0 28px; border: 0; border-radius: 999px; background: #fff; color: #000; cursor: pointer;">Guardar</button>
+</div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Semana — Bienvenida</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+a{color:#9aa4ff}a:hover{color:#c3c9ff}
+</style>
+</head>
+<body>
+<main style="width: 100%; min-height: 800px; box-sizing: border-box; background: #000; color: #fff; font-family: Inter, system-ui, sans-serif; padding: 56px 24px; display: flex; justify-content: center; align-items: center;">
+<form style="width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; gap: 8px;" aria-label="Paso 1 de 3">
+<span style="height: 4px; flex: 1; border-radius: 2px; background: #fff;"></span>
+<span style="height: 4px; flex: 1; border-radius: 2px; background: #333;"></span>
+<span style="height: 4px; flex: 1; border-radius: 2px; background: #333;"></span>
+</div>
+<p style="margin: 0; font-size: 13px; font-weight: 600; color: #8a8a8a; letter-spacing: 0.08em; text-transform: uppercase;">Paso 1 de 3</p>
+<h1 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-weight: 800; font-size: 52px; line-height: 1.02; letter-spacing: -0.02em;">Mi Semana</h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.5; color: #b5b5b5;">Organice sus tareas de trabajo por hora, día y semana.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<label for="nombre" style="font-size: 15px; font-weight: 600;">Ingrese su nombre</label>
+<input id="nombre" type="text" placeholder="Su nombre" style="font: inherit; font-size: 20px; color: #fff; background: transparent; border: 0; border-bottom: 2px solid #fff; padding: 10px 0; outline: none;">
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+<legend style="font-size: 15px; font-weight: 600; padding: 0; margin-bottom: 16px;">¿Cuál es su horario de trabajo?</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Lun</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Mar</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Mié</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Jue</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Vie</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Sáb</label>
+<label style="min-width: 56px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #3a3a3a; border-radius: 999px; font-size: 14px; color: #d0d0d0; padding: 0 12px;"><input type="checkbox" style="accent-color: #5b6cff;">Dom</label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="entrada" style="font-size: 14px; color: #b5b5b5;">Hora de entrada</label>
+<input id="entrada" type="time" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; color-scheme: dark;">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="salida" style="font-size: 14px; color: #b5b5b5;">Hora de salida</label>
+<input id="salida" type="time" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; color-scheme: dark;">
+</div>
+</div>
+</fieldset>
+<div style="display: flex; justify-content: flex-end;">
+<button type="button" style="font: inherit; font-size: 16px; font-weight: 600; height: 48px; padding: 0 28px; border: 0; border-radius: 999px; background: #fff; color: #000; cursor: pointer;">Continuar</button>
+</div>
+</form>
+</main>
+</body>
+</html>
