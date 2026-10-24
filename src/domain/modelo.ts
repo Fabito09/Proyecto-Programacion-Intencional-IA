@@ -1,4 +1,4 @@
-// Modelo de dominio de Mi Semana.
+// Modelo de dominio de Do It.
 // Cada tipo y límite de este archivo está definido en requirements.md;
 // si algo cambia aquí, primero debe cambiar allá.
 
@@ -120,4 +120,4 @@ export interface EstadoPersistido {
   preferencias: Preferencias;
 }
 
-export const CLAVE_ALMACENAMIENTO = 'mi-semana:v1';
+export const CLAVE_ALMACENAMIENTO = 'do-it:v1';

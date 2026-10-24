@@ -1,10 +1,10 @@
-# requirements.md — Mi Semana
+# requirements.md — Do It
 
 Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.5 (borrador — Avance 1)
+- **Versión:** 0.6 (borrador — Avance 1)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -209,7 +209,7 @@ tareas → recordatorios**. El paso actual se guarda en
 `preferencias.pasoPrimerUso`, de modo que recargar la página (F5) retoma el
 mismo paso.
 
-- **RF-INI-01** — **WHEN** la app arranca **IF** la clave `mi-semana:v1` no
+- **RF-INI-01** — **WHEN** la app arranca **IF** la clave `do-it:v1` no
   existe en LocalStorage **THEN** system **SHALL** mostrar la pantalla de
   bienvenida con el campo "Ingrese su nombre" y el bloque "¿Cuál es su horario
   de trabajo?" (casillas de lunes a domingo, hora de entrada y hora de
@@ -427,8 +427,8 @@ mismo paso.
 - **RF-PER-01** — **WHEN** se crea, edita o elimina cualquier entidad o
   preferencia, o se inicia o pausa un cronómetro, **IF** la operación fue
   válida **THEN** system **SHALL** guardar el estado completo en LocalStorage
-  bajo la clave `mi-semana:v1` antes de actualizar la interfaz.
-- **RF-PER-02** — **WHEN** la app arranca **IF** la clave `mi-semana:v1` no
+  bajo la clave `do-it:v1` antes de actualizar la interfaz.
+- **RF-PER-02** — **WHEN** la app arranca **IF** la clave `do-it:v1` no
   existe **THEN** system **SHALL** iniciar el primer uso (RF-INI-01); **IF**
   existe y `pasoPrimerUso` no es `'completo'` **THEN** system **SHALL**
   retomar ese paso.
@@ -469,7 +469,7 @@ mismo paso.
 Basado en la referencia visual aportada por el cliente (planificador semanal
 minimalista de fondo negro), adaptada a la cuadrícula de horas de esta app.
 Los wireframes están en el lienzo
-[Mi Semana — Wireframes](https://claude.ai/artifact/MRYwG8ndzKNhKDxhsibYgp).
+[Do It — Wireframes](https://claude.ai/artifact/MRYwG8ndzKNhKDxhsibYgp).
 
 - **RF-EST-01** — La interfaz **SHALL** usar tema oscuro: fondo negro, texto
   blanco, líneas divisorias finas en gris, sin sombras ni tarjetas con borde.
@@ -589,3 +589,4 @@ documento:
 | 0.4 | Meta sugerida a partir del tiempo medido en tareas repetidas (RN-12). | Pedido del cliente. |
 | 0.4 | Los recordatorios pasan a la sección RF-AJU junto con nombre y horario. | Reorganización del documento. |
 | 0.5 | Estilo visual basado en la referencia del cliente, adaptado a cuadrícula de horas en todas las vistas (RF-EST). De la referencia se descartan "Algún día" (tareas sin fecha) y arrastrar tareas. | Pedido del cliente. |
+| 0.6 | La aplicación se llama **Do It** (antes "Mi Semana", nombre provisional). La clave de LocalStorage pasa a `do-it:v1`. | Pedido del cliente. |

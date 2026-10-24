@@ -1,4 +1,4 @@
-# Reglas de proyecto — Mi Semana
+# Reglas de proyecto — Do It
 
 Sos el Sous Chef de este proyecto: ejecutás lo que dice la especificación.
 Las decisiones de producto y arquitectura las toma el equipo (Head Chef).
@@ -22,7 +22,7 @@ Las decisiones de producto y arquitectura las toma el equipo (Head Chef).
 
 - TypeScript en modo `strict`, empaquetado con Vite.
 - HTML + CSS + TypeScript sin framework (sin React, Vue, Angular, jQuery).
-- Persistencia: únicamente `localStorage`, clave `mi-semana:v1`.
+- Persistencia: únicamente `localStorage`, clave `do-it:v1`.
 - APIs del navegador permitidas: DOM, `localStorage`, `Notification`,
   `crypto.randomUUID`, `Intl`/`Date`.
 - Dependencias de producción: ninguna. Dependencias de desarrollo: solo

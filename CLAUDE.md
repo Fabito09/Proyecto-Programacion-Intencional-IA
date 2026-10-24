@@ -1,4 +1,4 @@
-# Mi Semana
+# Do It
 
 Las reglas de este proyecto están en [.cursorrules](.cursorrules) y la
 especificación en [requirements.md](requirements.md). Leé ambos antes de
