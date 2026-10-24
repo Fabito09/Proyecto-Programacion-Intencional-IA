@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.6 (borrador — Avance 1)
+- **Versión:** 0.7 (Avance 2)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -59,7 +59,7 @@ Principios de producto pedidos por el cliente:
 | **Texto normalizado** | Título o nombre sin espacios al inicio ni al final, con espacios internos repetidos reducidos a uno, en minúsculas y sin tildes. Se usa para detectar duplicados y tareas repetidas. |
 | **Franja de recordatorio** | Cada uno de los dos recordatorios configurables: `principal` y `secundario`. |
 | **Franja configurada** | Franja cuya `hora` no es `null`. Una franja sin hora se muestra como "Ninguno" y nunca avisa. |
-| **Resumen del día** | Texto con la cantidad de tareas abiertas de Hoy (indicando cuántas son de prioridad alta) y la cantidad de tareas vencidas. |
+| **Resumen del día** | Texto con la cantidad de tareas abiertas de Hoy que todavía no vencen (indicando cuántas son de prioridad alta) y la cantidad de tareas vencidas. Una tarea se cuenta en uno solo de los dos grupos. |
 | **Mensaje de error en línea** | Texto rojo bajo el campo inválido, que desaparece cuando el campo se corrige. |
 
 ## 3. Modelo de dominio
@@ -267,8 +267,9 @@ mismo paso.
   está vacía o no es una hora válida HH:MM de 24 h **THEN** system **SHALL**
   rechazar el guardado y mostrar en línea "Elija una hora de inicio".
 - **RF-TAR-07** — **WHEN** el usuario guarda una tarea **IF** no eligió
-  prioridad o categoría **THEN** system **SHALL** rechazar el guardado y marcar
-  en línea el campo faltante.
+  prioridad o categoría **THEN** system **SHALL** rechazar el guardado y mostrar
+  en línea "Elija una prioridad" o "Elija una categoría" bajo el campo
+  faltante.
 - **RF-TAR-08** — **WHEN** el usuario guarda una tarea **IF** todas las
   validaciones (RF-TAR-01 a 07, RN-01 y RN-09) se cumplen **THEN** system
   **SHALL** persistirla con `metaMinutos = horas × 60 + minutos`, cerrar el
@@ -590,3 +591,4 @@ documento:
 | 0.4 | Los recordatorios pasan a la sección RF-AJU junto con nombre y horario. | Reorganización del documento. |
 | 0.5 | Estilo visual basado en la referencia del cliente, adaptado a cuadrícula de horas en todas las vistas (RF-EST). De la referencia se descartan "Algún día" (tareas sin fecha) y arrastrar tareas. | Pedido del cliente. |
 | 0.6 | La aplicación se llama **Do It** (antes "Mi Semana", nombre provisional). La clave de LocalStorage pasa a `do-it:v1`. | Pedido del cliente. |
+| 0.7 | Precisiones detectadas al implementar: el Resumen del día no cuenta dos veces una tarea vencida de Hoy; RF-TAR-07 define sus mensajes. | Ambigüedad encontrada por la IA (Avance 2). |

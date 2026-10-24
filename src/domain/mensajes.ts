@@ -1,0 +1,28 @@
+// Textos visibles que requirements.md cita literalmente. Un solo lugar para no repetirlos.
+
+export const MENSAJES = {
+  nombreObligatorio: 'El nombre es obligatorio',
+  maximoCaracteres: (maximo: number) => `Máximo ${maximo} caracteres`,
+  marqueUnDia: 'Marque al menos un día',
+  indiqueEntrada: 'Indique la hora de entrada',
+  indiqueSalida: 'Indique la hora de salida',
+  salidaDespuesDeEntrada: 'La salida debe ser después de la entrada',
+
+  tituloObligatorio: 'El título es obligatorio',
+  tareaDuplicada: 'Ya tiene una tarea con ese título esta semana',
+  metaFueraDeRango: 'La meta debe estar entre 1 minuto y 24 horas',
+  fechaInvalida: 'Elija una fecha válida',
+  fechaEnElPasado: 'La fecha no puede estar en el pasado',
+  horaInicioInvalida: 'Elija una hora de inicio',
+  elijaPrioridad: 'Elija una prioridad',
+  elijaCategoria: 'Elija una categoría',
+  diaNoLaboral: 'Ese día no está en su horario de trabajo',
+  fueraDeJornada: (entrada: string, salida: string) => `La tarea debe quedar entre las ${entrada} y las ${salida}`,
+
+  categoriaNombreObligatorio: 'El nombre es obligatorio',
+  categoriaDuplicada: 'Ya existe una categoría con ese nombre',
+  elijaColor: 'Elija un color',
+
+  horaInvalida: 'Hora inválida',
+  recordatoriosIguales: 'Los dos recordatorios no pueden tener la misma hora',
+} as const;
