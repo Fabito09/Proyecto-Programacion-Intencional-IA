@@ -1,0 +1,154 @@
+/* Disposición de pantallas y encabezado (RF-UI-01, RF-UI-04: desde 360 px sin desplazamiento horizontal). */
+.pantalla {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px var(--margen-pantalla);
+}
+
+.pantalla--centrada {
+  align-items: center;
+}
+
+.pantalla--centrada > .formulario {
+  max-width: 560px;
+}
+
+.pantalla--seccion {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 28px;
+  min-height: auto;
+  padding-top: 28px;
+}
+
+.pantalla__ancha {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1040px;
+}
+
+.pantalla__angosta {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.dos-columnas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.dos-columnas > * {
+  flex: 1 1 380px;
+  min-width: 0;
+}
+
+.panel-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seccion-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.seccion-formulario__titulo {
+  padding: 0;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.seccion-ajustes {
+  gap: 18px;
+}
+
+.recordatorios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Encabezado ─────────────────────────────────────────── */
+.encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  padding: 14px var(--margen-pantalla);
+  border-bottom: 1px solid var(--linea);
+}
+
+.encabezado__secciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.encabezado__seccion {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radio-pildora);
+  background: transparent;
+  color: var(--texto-suave);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.encabezado__seccion[aria-current='page'] {
+  background: var(--texto);
+  color: #000;
+  font-weight: 600;
+}
+
+.encabezado__derecha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.encabezado__saludo {
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+/* RF-CRO-04 */
+.cronometro-en-curso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 4px 4px 4px 14px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio-pildora);
+  background: var(--superficie);
+  color: var(--acento);
+}
+
+.cronometro-en-curso__titulo {
+  overflow: hidden;
+  max-width: 200px;
+  color: #d0d0d0;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

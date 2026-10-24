@@ -24,6 +24,11 @@ export const MENSAJES = {
   elijaColor: 'Elija un color',
 
   horaInvalida: 'Hora inválida',
+  soloDentroDeLaApp: 'Los recordatorios aparecerán solo dentro de la app',
+  datosIlegibles: 'No se pudieron leer sus datos',
+  confirmarEliminarTarea: '¿Eliminar esta tarea? No se puede deshacer.',
+  sinTareas: 'Todavía no tiene tareas',
+  sinCoincidencias: 'No hay tareas que coincidan',
   recordatoriosIguales: 'Los dos recordatorios no pueden tener la misma hora',
 
   unaCategoriaComoMinimo: 'Debe existir al menos una categoría',

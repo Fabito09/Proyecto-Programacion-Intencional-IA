@@ -1,0 +1,353 @@
+/* Calendario: controles, vencidas y cuadrícula por horas (RF-CAL, RF-EST-02 a RF-EST-06). */
+.calendario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px var(--margen-pantalla) 32px;
+}
+
+.calendario__encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.navegacion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.segmentado {
+  display: flex;
+  padding: 3px;
+  border: 1px solid #333;
+  border-radius: var(--radio-pildora);
+}
+
+.segmentado__opcion {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radio-pildora);
+  background: transparent;
+  color: var(--texto-suave);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.segmentado__opcion[aria-pressed='true'] {
+  background: var(--superficie-3);
+  color: var(--texto);
+  font-weight: 600;
+}
+
+/* RN-05 */
+.vencidas {
+  border-top: 1px solid #3a1a1a;
+  border-bottom: 1px solid #3a1a1a;
+}
+
+.vencidas__resumen {
+  padding: 12px 0;
+  color: var(--rojo);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.vencidas .fila-tarea:last-child {
+  border-bottom: 0;
+}
+
+/* ── Cuadrícula ─────────────────────────────────────────── */
+.cuadricula {
+  --ancho-horas: 52px;
+  --separacion: 12px;
+}
+
+.cuadricula__desplazable {
+  max-height: 70vh;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.cuadricula__cabecera,
+.cuadricula__cuerpo {
+  display: grid;
+  grid-template-columns: var(--ancho-horas) repeat(var(--columnas), minmax(0, 1fr));
+  column-gap: var(--separacion);
+}
+
+/* RF-UI-04: la semana se desplaza dentro de su propio contenedor en pantallas angostas. */
+.cuadricula--semana .cuadricula__cabecera,
+.cuadricula--semana .cuadricula__cuerpo {
+  min-width: 860px;
+}
+
+.cuadricula__cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding-bottom: 10px;
+  background: var(--fondo);
+}
+
+/* RF-EST-03 */
+.cuadricula__cabecera-dia {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cuadricula__fecha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--texto);
+}
+
+.cuadricula__numero {
+  font-size: 20px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.cuadricula__dia-semana {
+  color: var(--texto-apagado);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.cuadricula__total {
+  color: var(--texto-tenue);
+  font-size: 12px;
+}
+
+/* RF-EST-04 */
+.cuadricula__cabecera-dia.es-hoy .cuadricula__fecha {
+  border-bottom-color: var(--acento);
+}
+
+.cuadricula__cabecera-dia.es-hoy .cuadricula__numero,
+.cuadricula__cabecera-dia.es-hoy .cuadricula__dia-semana {
+  color: var(--acento);
+}
+
+.cuadricula__cuerpo {
+  margin-block: 10px;
+  height: var(--alto-total);
+}
+
+.cuadricula__horas {
+  position: relative;
+}
+
+.cuadricula__hora {
+  position: absolute;
+  top: var(--arriba);
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--texto-tenue);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cuadricula__hora.es-en-punto {
+  color: var(--texto-suave);
+}
+
+.cuadricula__columna {
+  position: relative;
+  height: var(--alto-total);
+  border-bottom: 1px solid var(--linea);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--linea) 0,
+    var(--linea) 1px,
+    transparent 1px,
+    transparent var(--alto-fila)
+  );
+  cursor: cell;
+}
+
+/* RF-CAL-06 */
+.cuadricula__columna.es-no-laboral {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: default;
+}
+
+.cuadricula__sombra {
+  position: absolute;
+  top: var(--arriba);
+  right: 0;
+  left: 0;
+  height: var(--alto);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: default;
+}
+
+.linea-ahora {
+  position: absolute;
+  top: var(--arriba);
+  right: 0;
+  left: -6px;
+  height: 2px;
+  background: var(--acento);
+  pointer-events: none;
+}
+
+.linea-ahora::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--acento);
+}
+
+/* ── Bloques de tarea (RF-CAL-07, RF-EST-06, RN-06, RN-08) ── */
+.bloque {
+  position: absolute;
+  top: calc(var(--arriba) + 2px);
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  height: calc(var(--alto) - 4px);
+  min-height: 24px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--superficie-2);
+  cursor: default;
+  container-type: size;
+}
+
+/* Bloques bajos (tareas cortas): solo el título; el resto está en el detalle y en la etiqueta accesible. */
+@container (max-height: 46px) {
+  .bloque__detalle,
+  .bloque .pildora {
+    display: none;
+  }
+
+  .bloque__abrir {
+    justify-content: center;
+    padding-block: 2px;
+  }
+}
+
+@container (max-height: 34px) {
+  .bloque__acciones {
+    display: none;
+  }
+}
+
+.cuadricula--semana .bloque {
+  flex-direction: column;
+}
+
+.bloque__abrir {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bloque__abrir:focus-visible {
+  outline-offset: -2px;
+}
+
+.bloque__titulo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bloque__texto-titulo {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bloque__detalle {
+  color: var(--texto-suave);
+  font-size: 11.5px;
+}
+
+.bloque .pildora {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+.bloque__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 4px 8px;
+}
+
+.bloque__acciones .boton {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.bloque--grupo {
+  border: 1px solid var(--linea-fuerte);
+}
+
+.bloque--por_vencer .bloque__texto-titulo {
+  color: var(--naranja);
+}
+
+.bloque--por_vencer.bloque--grupo {
+  border-color: var(--naranja);
+}
+
+.bloque--vencida {
+  background: var(--rojo-fondo);
+}
+
+.bloque--vencida .bloque__texto-titulo,
+.bloque--vencida .bloque__detalle {
+  color: var(--rojo);
+}
+
+.bloque--completada {
+  background: var(--superficie);
+}
+
+.bloque--completada .bloque__titulo {
+  color: var(--texto-tenue);
+}
+
+.bloque--completada .bloque__texto-titulo {
+  text-decoration: line-through;
+}

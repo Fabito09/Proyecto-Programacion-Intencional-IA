@@ -92,6 +92,14 @@ export function tareaPrincipal(grupo: Tarea[]): Tarea {
   }, primera);
 }
 
+/** RN-08: el bloque de un grupo va desde el inicio más temprano hasta el fin más tardío. */
+export function extremosDelGrupo(grupo: Tarea[]): { inicio: number; fin: number } {
+  return {
+    inicio: Math.min(...grupo.map(inicioEnMinutos)),
+    fin: Math.max(...grupo.map(finEnMinutos)),
+  };
+}
+
 /** RF-CAL-08: suma de las metas de las tareas abiertas de un día. */
 export function sumaDeMetasAbiertas(tareas: Tarea[], fecha: FechaISO): number {
   return tareas
