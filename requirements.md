@@ -194,7 +194,8 @@ tarea
 al menos 60 segundos medidos
 **THEN** system **SHALL** calcular el promedio del tiempo medido de las últimas
 3 de ellas (o de las que haya, si son menos), redondeado al minuto, mostrar
-"Las últimas {N} veces le tomó en promedio {X h Y min}" y escribir ese valor en
+"Las últimas {N} veces le tomó en promedio {X h Y min}" (con una sola tarea
+anterior: "La última vez le tomó {X h Y min}") y escribir ese valor en
 la meta de tiempo solo si el usuario todavía no la modificó; el usuario puede
 cambiarla.
 
@@ -394,7 +395,8 @@ mismo paso.
   hay tareas abiertas que quedan fuera del nuevo horario **THEN** system
   **SHALL** guardar el horario, conservar esas tareas sin cambios y mostrar el
   aviso informativo "{N} tareas quedan fuera de su nuevo horario. Ajústelas
-  cuando las edite."
+  cuando las edite." (con una sola tarea: "1 tarea queda fuera de su nuevo
+  horario. Ajústela cuando la edite.")
 - **RF-AJU-04** — **WHEN** el usuario guarda los recordatorios **IF** una
   casilla no está vacía y su valor no es una hora válida HH:MM de 24 h
   **THEN** system **SHALL** rechazar el guardado y mostrar en línea "Hora
@@ -597,3 +599,4 @@ documento:
 | 0.6 | La aplicación se llama **Do It** (antes "Mi Semana", nombre provisional). La clave de LocalStorage pasa a `do-it:v1`. | Pedido del cliente. |
 | 0.7 | Precisiones detectadas al implementar: el Resumen del día no cuenta dos veces una tarea vencida de Hoy; RF-TAR-07 define sus mensajes. | Ambigüedad encontrada por la IA (Avance 2). |
 | 0.8 | RF-AJU-06: un recordatorio configurado para una hora que ya pasó empieza a avisar Mañana (antes avisaba en el minuto siguiente). Nuevo CB-41. | Ambigüedad encontrada al probar en el navegador; decisión del cliente. |
+| 0.8 | RN-12 y RF-AJU-03 definen su texto en singular ("La última vez…", "1 tarea queda…"). | Error de redacción detectado al probar; decisión del cliente. |

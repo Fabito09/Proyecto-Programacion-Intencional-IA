@@ -1,4 +1,5 @@
 // Formulario de tarea (RF-UI-02) con la meta sugerida para tareas repetidas (RN-12).
+import { MENSAJES } from '../../domain/mensajes';
 import { PRIORIDADES, type FechaISO, type HoraDelDia, type Tarea } from '../../domain/modelo';
 import { sugerirMeta } from '../../domain/sugerencias';
 import { formatearDuracion } from '../../domain/tiempo';
@@ -110,7 +111,7 @@ export function formularioTarea(opciones: OpcionesFormularioTarea): HTMLFormElem
       if (sugerida === null) return;
       sugerencia.replaceChildren(
         icono('reloj'),
-        `Las últimas ${sugerida.veces} veces le tomó en promedio ${formatearDuracion(sugerida.minutos)}`,
+        MENSAJES.metaSugerida(sugerida.veces, formatearDuracion(sugerida.minutos)),
       );
       if (!metaEscritaPorElUsuario) {
         metaHoras.value = String(Math.floor(sugerida.minutos / 60));

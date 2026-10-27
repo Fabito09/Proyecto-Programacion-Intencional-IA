@@ -39,5 +39,11 @@ export const MENSAJES = {
   cronometroPausado: (titulo: string) => `Se pausó el cronómetro de '${titulo}'`,
   pausaAutomatica: (titulo: string) => `El cronómetro de '${titulo}' se pausó solo al terminar su jornada`,
   tareasFueraDeHorario: (cantidad: number) =>
-    `${cantidad} tareas quedan fuera de su nuevo horario. Ajústelas cuando las edite.`,
+    cantidad === 1
+      ? '1 tarea queda fuera de su nuevo horario. Ajústela cuando la edite.'
+      : `${cantidad} tareas quedan fuera de su nuevo horario. Ajústelas cuando las edite.`,
+  metaSugerida: (veces: number, duracion: string) =>
+    veces === 1
+      ? `La última vez le tomó ${duracion}`
+      : `Las últimas ${veces} veces le tomó en promedio ${duracion}`,
 } as const;

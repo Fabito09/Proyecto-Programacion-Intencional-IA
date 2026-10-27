@@ -169,7 +169,7 @@ describe('evaluación periódica (RF-REC-01)', () => {
     const aplicacion = aplicacionLista();
     aplicacion.guardarTarea(unBorrador({ horaInicio: '16:00', metaHoras: '0', metaMinutos: '30', categoriaId: idGeneral(aplicacion) }), null);
     const respuesta = aplicacion.guardarHorario({ ...HORARIO, salida: '15:00' });
-    expect(respuesta).toEqual({ tipo: 'ok', avisos: ['1 tareas quedan fuera de su nuevo horario. Ajústelas cuando las edite.'] });
+    expect(respuesta).toEqual({ tipo: 'ok', avisos: ['1 tarea queda fuera de su nuevo horario. Ajústela cuando la edite.'] });
     expect(aplicacion.obtenerEstado().tareas).toHaveLength(1);
   });
 });
