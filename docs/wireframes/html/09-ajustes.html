@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Do It — Ajustes</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#000}
 a{color:#9aa4ff}a:hover{color:#c3c9ff}
 </style>
 </head>
 <body>
-<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: #000; color: #fff; font-family: Inter, system-ui, sans-serif;">
+<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: radial-gradient(36% 32% at 78% 22%, rgba(38, 170, 200, 0.24), transparent 70%), radial-gradient(40% 34% at 62% 80%, rgba(225, 110, 35, 0.2), transparent 70%), radial-gradient(32% 28% at 18% 70%, rgba(40, 140, 150, 0.16), transparent 70%), #000; color: #fff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 32px; border-bottom: 1px solid #222;">
 <nav aria-label="Secciones" style="display: flex; gap: 4px; flex-wrap: wrap;">
 <a href="04-semana.html" style="height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; color: #b5b5b5; font-size: 14px; font-weight: 500; text-decoration: none;">Calendario</a>
@@ -22,14 +21,14 @@ a{color:#9aa4ff}a:hover{color:#c3c9ff}
 </header>
 <main style="padding: 32px; display: flex; justify-content: center;">
 <form style="width: 100%; max-width: 720px; display: flex; flex-direction: column; gap: 40px;">
-<h1 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1;">Ajustes</h1>
+<h1 style="margin: 0; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1;">Ajustes</h1>
 <section style="display: flex; flex-direction: column; gap: 14px;">
-<h2 style="margin: 0; padding-bottom: 10px; border-bottom: 2px solid #fff; font-family: 'Inter Tight', Inter, sans-serif; font-size: 20px; font-weight: 700;">Su nombre</h2>
+<h2 style="margin: 0; padding-bottom: 10px; border-bottom: 2px solid #fff; font-size: 20px; font-weight: 700;">Su nombre</h2>
 <label for="aj-nombre" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Nombre</label>
 <input id="aj-nombre" type="text" value="María" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; max-width: 360px;">
 </section>
 <section style="display: flex; flex-direction: column; gap: 16px;">
-<h2 style="margin: 0; padding-bottom: 10px; border-bottom: 2px solid #fff; font-family: 'Inter Tight', Inter, sans-serif; font-size: 20px; font-weight: 700;">Horario de trabajo</h2>
+<h2 style="margin: 0; padding-bottom: 10px; border-bottom: 2px solid #fff; font-size: 20px; font-weight: 700;">Horario de trabajo</h2>
 <fieldset style="border: 0; margin: 0; padding: 0;">
 <legend style="font-size: 14px; color: #b5b5b5; padding: 0; margin-bottom: 10px;">Días laborales</legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
@@ -45,26 +44,23 @@ a{color:#9aa4ff}a:hover{color:#c3c9ff}
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 420px;">
 <div style="display: flex; flex-direction: column; gap: 8px;">
 <label for="aj-entrada" style="font-size: 14px; color: #b5b5b5;">Entrada</label>
-<input id="aj-entrada" type="time" value="08:00" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; color-scheme: dark;">
+<div style="display: flex; align-items: center; gap: 6px;"><select id="aj-entrada" aria-label="Entrada: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>08</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Entrada: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>00</option></select></div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px;">
 <label for="aj-salida" style="font-size: 14px; color: #b5b5b5;">Salida</label>
-<input id="aj-salida" type="time" value="17:00" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 8px 0; color-scheme: dark;">
+<div style="display: flex; align-items: center; gap: 6px;"><select id="aj-salida" aria-label="Salida: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>17</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Salida: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>00</option></select></div>
 </div>
 </div>
 </section>
 <section style="display: flex; flex-direction: column; gap: 4px;">
-<h2 style="margin: 0 0 6px; padding-bottom: 10px; border-bottom: 2px solid #fff; font-family: 'Inter Tight', Inter, sans-serif; font-size: 20px; font-weight: 700;">Recordatorios</h2>
+<h2 style="margin: 0 0 6px; padding-bottom: 10px; border-bottom: 2px solid #fff; font-size: 20px; font-weight: 700;">Recordatorios</h2>
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #222;">
 <label for="aj-r1" style="font-size: 16px; font-weight: 500;">Primer recordatorio</label>
-<input id="aj-r1" type="time" value="08:00" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 6px 0; width: 140px; color-scheme: dark;">
+<div style="display: flex; align-items: center; gap: 6px;"><select id="aj-r1" aria-label="Primer recordatorio: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 104px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>08</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Primer recordatorio: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>00</option></select></div>
 </div>
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #222;">
 <label for="aj-r2" style="font-size: 16px; font-weight: 500;">Segundo recordatorio</label>
-<div style="display: flex; align-items: center; gap: 12px;">
-<span style="font-size: 14px; color: #8a8a8a;">Ninguno</span>
-<input id="aj-r2" type="time" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 6px 0; width: 140px; color-scheme: dark;">
-</div>
+<div style="display: flex; align-items: center; gap: 6px;"><select id="aj-r2" aria-label="Segundo recordatorio: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 104px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>Ninguno</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Segundo recordatorio: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>--</option></select></div>
 </div>
 <p style="margin: 10px 0 0; display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: #ffa53d;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Los recordatorios aparecerán solo dentro de la app.</p>
 </section>

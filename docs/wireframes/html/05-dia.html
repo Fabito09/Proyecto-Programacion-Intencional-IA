@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Do It — Calendario · Día</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#000}
 a{color:#9aa4ff}a:hover{color:#c3c9ff}
 </style>
 </head>
 <body>
-<div style="width: 100%; min-height: 1000px; box-sizing: border-box; background: #000; color: #fff; font-family: Inter, system-ui, sans-serif;">
+<div style="width: 100%; min-height: 1000px; box-sizing: border-box; background: radial-gradient(36% 32% at 78% 22%, rgba(38, 170, 200, 0.24), transparent 70%), radial-gradient(40% 34% at 62% 80%, rgba(225, 110, 35, 0.2), transparent 70%), radial-gradient(32% 28% at 18% 70%, rgba(40, 140, 150, 0.16), transparent 70%), #000; color: #fff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 32px; border-bottom: 1px solid #222;">
 <nav aria-label="Secciones" style="display: flex; gap: 4px; flex-wrap: wrap;">
 <a href="04-semana.html" aria-current="page" style="height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; background: #fff; color: #000; font-size: 14px; font-weight: 600; text-decoration: none;">Calendario</a>
@@ -32,18 +31,21 @@ a{color:#9aa4ff}a:hover{color:#c3c9ff}
 <div role="status" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 16px; border-radius: 12px; background: #15172e; border: 1px solid #343a7a;">
 <div style="display: flex; gap: 12px; align-items: flex-start;">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px;"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
-<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #e2e4ff;"><strong>Resumen del día:</strong> tiene 4 tareas para hoy (1 de prioridad alta) y 1 vencida.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #e2e4ff;">Resumen del día: Tiene 4 tareas para hoy (1 de prioridad alta) y 1 vencida.</p>
 </div>
 <button type="button" aria-label="Cerrar resumen" style="width: 32px; height: 32px; flex: none; border: 0; border-radius: 999px; background: transparent; color: #b5b5b5; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-<h1 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1;"><span style="color: #6f7cff;">Viernes 23 oct</span> <span style="color: #5f5f5f;">S43</span></h1>
+<h1 style="margin: 0; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; line-height: 1;"><span style="color: #6f7cff;">Viernes 23 oct</span> <span style="color: #5f5f5f;">S43</span></h1>
 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 <div role="group" aria-label="Vista" style="display: flex; border: 1px solid #333; border-radius: 999px; padding: 3px;">
 <a href="06-proximas-horas.html" style="height: 34px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; color: #b5b5b5; font-size: 13px; text-decoration: none;">Horas</a>
 <a href="05-dia.html" aria-current="page" style="height: 34px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #2a2a2a; color: #fff; font-size: 13px; font-weight: 600; text-decoration: none;">Día</a>
 <a href="04-semana.html" style="height: 34px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; color: #b5b5b5; font-size: 13px; text-decoration: none;">Semana</a>
 </div>
+<label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #8a8a8a;">Ordenar<select style="font: inherit; font-size: 13px; height: 40px; color: #fff; background: #111; border: 1px solid #333; border-radius: 999px; padding: 0 12px;"><option>Prioridad</option></select></label>
+<label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #8a8a8a;">Categoría<select style="font: inherit; font-size: 13px; height: 40px; color: #fff; background: #111; border: 1px solid #333; border-radius: 999px; padding: 0 12px;"><option>Todas</option></select></label>
+<label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #8a8a8a;">Estado<select style="font: inherit; font-size: 13px; height: 40px; color: #fff; background: #111; border: 1px solid #333; border-radius: 999px; padding: 0 12px;"><option>Todos</option></select></label>
 <button type="button" style="font: inherit; font-size: 13px; font-weight: 600; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #333; background: transparent; color: #fff; cursor: pointer;">Hoy</button>
 <button type="button" aria-label="Día anterior" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
 <button type="button" aria-label="Día siguiente" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>

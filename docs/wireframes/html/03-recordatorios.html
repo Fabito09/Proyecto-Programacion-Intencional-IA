@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Do It — Recordatorios</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#000}
 a{color:#9aa4ff}a:hover{color:#c3c9ff}
 </style>
 </head>
 <body>
-<main style="width: 100%; min-height: 800px; box-sizing: border-box; background: #000; color: #fff; font-family: Inter, system-ui, sans-serif; padding: 56px 24px; display: flex; justify-content: center; align-items: center;">
+<main style="width: 100%; min-height: 800px; box-sizing: border-box; background: radial-gradient(36% 32% at 78% 22%, rgba(38, 170, 200, 0.24), transparent 70%), radial-gradient(40% 34% at 62% 80%, rgba(225, 110, 35, 0.2), transparent 70%), radial-gradient(32% 28% at 18% 70%, rgba(40, 140, 150, 0.16), transparent 70%), #000; color: #fff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 56px 24px; display: flex; justify-content: center; align-items: center;">
 <form style="width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 36px;">
 <div style="display: flex; flex-direction: column; gap: 14px;">
 <div style="display: flex; gap: 8px;" aria-label="Paso 3 de 3">
@@ -20,19 +19,19 @@ a{color:#9aa4ff}a:hover{color:#c3c9ff}
 <span style="height: 4px; flex: 1; border-radius: 2px; background: #fff;"></span>
 </div>
 <p style="margin: 0; font-size: 13px; font-weight: 600; color: #8a8a8a; letter-spacing: 0.08em; text-transform: uppercase;">Paso 3 de 3</p>
-<h1 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;">¿A qué hora quiere recibir sus recordatorios?</h1>
-<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #b5b5b5;">Cada recordatorio es un solo resumen de sus tareas del día. Deje una casilla vacía si no quiere ese recordatorio.</p>
+<h1 style="margin: 0; font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;">¿A qué hora quiere recibir sus recordatorios?</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #b5b5b5;">Cada recordatorio es un solo resumen de sus tareas del día.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 0;">
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid #2a2a2a;">
 <label for="r1" style="font-size: 17px; font-weight: 500;">Primer recordatorio</label>
-<input id="r1" type="time" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 6px 0; width: 140px; color-scheme: dark;">
+<div style="display: flex; align-items: center; gap: 6px;"><select id="r1" aria-label="Primer recordatorio: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 104px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>08</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Primer recordatorio: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>00</option></select></div>
 </div>
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid #2a2a2a;">
 <label for="r2" style="font-size: 17px; font-weight: 500;">Segundo recordatorio</label>
-<input id="r2" type="time" style="font: inherit; font-size: 18px; color: #fff; background: transparent; border: 0; border-bottom: 1px solid #5a5a5a; padding: 6px 0; width: 140px; color-scheme: dark;">
+<div style="display: flex; align-items: center; gap: 6px;"><select id="r2" aria-label="Segundo recordatorio: horas" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 104px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>Ninguno</option></select><span style="color: #8a8a8a; font-weight: 700;">:</span><select aria-label="Segundo recordatorio: minutos" style="font: inherit; font-size: 16px; min-height: 44px; min-width: 84px; padding: 8px 12px; color: #fff; background: #111; border: 1px solid #3a3a3a; border-radius: 10px;"><option>--</option></select></div>
 </div>
-<p style="margin: 12px 0 0; font-size: 14px; color: #8a8a8a;">Casilla vacía = "Ninguno".</p>
+<p style="margin: 12px 0 0; font-size: 14px; color: #8a8a8a;">Elija "Ninguno" si no quiere ese recordatorio.</p>
 </div>
 <div style="display: flex; justify-content: flex-end;">
 <button type="button" style="font: inherit; font-size: 16px; font-weight: 600; height: 48px; padding: 0 28px; border: 0; border-radius: 999px; background: #fff; color: #000; cursor: pointer;">Terminar</button>

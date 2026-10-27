@@ -530,7 +530,10 @@ Los wireframes están en el lienzo
   su fondo negro y su texto blanco. Los botones y demás controles conservan el
   contorno azul solo al navegar con teclado (RF-UI-04).
 - **Nota:** los wireframes de [docs/wireframes/](docs/wireframes/index.html)
-  son anteriores a RF-EST-07 y RF-EST-08 y no muestran esos efectos.
+  están actualizados a la versión 0.11 (tipografía del sistema, luces del
+  fondo de RF-EST-08 y campos de hora de RF-UI-07). El brillo de RF-EST-07 no
+  se ve en ellos porque solo aparece al mover el mouse, y muestran la versión
+  de escritorio; la de teléfono está definida en RF-UI-06.
 
 ---
 
@@ -645,3 +648,4 @@ documento:
 | 0.10 | Nuevo RF-UI-06: diseño adaptado a teléfonos (encabezado, controles, bloques del Día y columna de horas fija en la Semana). | Pedido del cliente ("aplica responsive"); problemas detectados con capturas a 390 px. |
 | 0.10 | Nuevo RF-UI-07: los campos de hora usan listas finitas (00–23, 00–59) en vez del selector circular del navegador. | Pedido del cliente ("que choque como con una pared"). |
 | 0.11 | Nuevo RF-EST-09: el foco de los campos se marca con su línea o borde, sin el recuadro morado; el autocompletado no cambia los colores. | Pedido del cliente. |
+| 0.11 | Wireframes actualizados para coincidir con la app (tipografía, luces del fondo, campos de hora y textos). | Pedido del cliente. |
