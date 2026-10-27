@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.10 (Semana 4)
+- **Versión:** 0.11 (Semana 4)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -523,6 +523,12 @@ Los wireframes están en el lienzo
   oscuras para que el texto blanco mantenga su contraste, y **IF** el sistema
   del usuario pide reducir el movimiento **THEN** system **SHALL** mostrarlas
   quietas.
+- **RF-EST-09** — **WHEN** un campo de texto, una lista desplegable o un área de
+  texto recibe el foco, system **SHALL** indicarlo aclarando su línea o su
+  borde (blanca y más gruesa en los campos de texto), sin recuadro de color.
+  **IF** el navegador autocompleta un campo **THEN** system **SHALL** mantener
+  su fondo negro y su texto blanco. Los botones y demás controles conservan el
+  contorno azul solo al navegar con teclado (RF-UI-04).
 - **Nota:** los wireframes de [docs/wireframes/](docs/wireframes/index.html)
   son anteriores a RF-EST-07 y RF-EST-08 y no muestran esos efectos.
 
@@ -638,3 +644,4 @@ documento:
 | 0.10 | RF-EST-08: luces más visibles y movimiento al azar, cada luz por su cuenta. | Pedido del cliente. |
 | 0.10 | Nuevo RF-UI-06: diseño adaptado a teléfonos (encabezado, controles, bloques del Día y columna de horas fija en la Semana). | Pedido del cliente ("aplica responsive"); problemas detectados con capturas a 390 px. |
 | 0.10 | Nuevo RF-UI-07: los campos de hora usan listas finitas (00–23, 00–59) en vez del selector circular del navegador. | Pedido del cliente ("que choque como con una pared"). |
+| 0.11 | Nuevo RF-EST-09: el foco de los campos se marca con su línea o borde, sin el recuadro morado; el autocompletado no cambia los colores. | Pedido del cliente. |
