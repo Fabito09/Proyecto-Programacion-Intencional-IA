@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.9 (Semana 4)
+- **Versión:** 0.10 (Semana 4)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -467,6 +467,21 @@ mismo paso.
 - **RF-UI-04** — La interfaz **SHALL** poder usarse con teclado y en pantallas
   desde 360 px de ancho sin desplazamiento horizontal de la página (la vista
   Semana puede desplazarse horizontalmente dentro de su propio contenedor).
+- **RF-UI-06** — **WHILE** la pantalla mide 640 px de ancho o menos, system
+  **SHALL**: (a) mostrar el encabezado en dos filas como máximo (secciones;
+  cronómetro y saludo); (b) agrupar los controles del calendario: el selector
+  de vista a todo el ancho, Ordenar, Categoría y Estado en una sola fila, y la
+  navegación y "Nueva tarea" debajo; (c) en las vistas Día y Horas, poner los
+  botones del cronómetro y "Completar" debajo del texto de la tarea; (d) en la
+  vista Semana, mantener fija la columna de horas al desplazarse de lado y dar
+  a cada día al menos 110 px de ancho.
+- **RF-UI-07** — Todo campo de hora (entrada, salida, recordatorios y hora de
+  inicio de una tarea) **SHALL** elegirse con dos listas finitas: horas de 00
+  a 23 y minutos de 00 a 59, que se detienen en su último valor en lugar de
+  volver a empezar como el selector circular del navegador. **WHEN** el
+  usuario elige una hora **IF** los minutos están vacíos **THEN** system
+  **SHALL** ponerlos en 00. En los recordatorios, la opción vacía de la lista
+  de horas **SHALL** decir "Ninguno" (RF-AJU-01).
 - **RF-UI-05** — Todos los textos de la interfaz **SHALL** tratar al usuario de
   **usted**.
 
@@ -500,12 +515,14 @@ Los wireframes están en el lienzo
   segmentados y avisos. **IF** el dispositivo no tiene mouse (pantalla táctil)
   **THEN** system **SHALL** no mostrar el efecto. Los campos de texto y las
   listas desplegables no llevan el efecto.
-- **RF-EST-08** — El fondo **SHALL** seguir siendo negro, con luces difusas y
-  tenues (cian arriba a la derecha y naranja abajo) que se desplazan muy
-  lentamente, inspiradas en una referencia de fondo tipo shader aportada por
-  el cliente. Las luces **SHALL** ser lo bastante oscuras para que el texto
-  blanco mantenga su contraste, y **IF** el sistema del usuario pide reducir el
-  movimiento **THEN** system **SHALL** mostrarlas quietas.
+- **RF-EST-08** — El fondo **SHALL** seguir siendo negro, con tres luces
+  difusas visibles (cian, naranja y verde azulado) inspiradas en una
+  referencia de fondo tipo shader aportada por el cliente. **WHILE** la app
+  está abierta, cada luz **SHALL** desplazarse lentamente hacia una posición
+  elegida al azar, y al llegar elegir otra. Las luces **SHALL** ser lo bastante
+  oscuras para que el texto blanco mantenga su contraste, y **IF** el sistema
+  del usuario pide reducir el movimiento **THEN** system **SHALL** mostrarlas
+  quietas.
 - **Nota:** los wireframes de [docs/wireframes/](docs/wireframes/index.html)
   son anteriores a RF-EST-07 y RF-EST-08 y no muestran esos efectos.
 
@@ -618,3 +635,6 @@ documento:
 | 0.8 | RN-12 y RF-AJU-03 definen su texto en singular ("La última vez…", "1 tarea queda…"). | Error de redacción detectado al probar; decisión del cliente. |
 | 0.9 | Nuevo RF-EST-07: los bordes se iluminan levemente en azul cerca del cursor. | Pedido del cliente (referencia visual). |
 | 0.9 | Nuevo RF-EST-08: fondo negro con luces difusas en movimiento lento, estilo más maximalista. | Pedido del cliente (referencia visual; el fondo debe seguir siendo negro). |
+| 0.10 | RF-EST-08: luces más visibles y movimiento al azar, cada luz por su cuenta. | Pedido del cliente. |
+| 0.10 | Nuevo RF-UI-06: diseño adaptado a teléfonos (encabezado, controles, bloques del Día y columna de horas fija en la Semana). | Pedido del cliente ("aplica responsive"); problemas detectados con capturas a 390 px. |
+| 0.10 | Nuevo RF-UI-07: los campos de hora usan listas finitas (00–23, 00–59) en vez del selector circular del navegador. | Pedido del cliente ("que choque como con una pared"). |

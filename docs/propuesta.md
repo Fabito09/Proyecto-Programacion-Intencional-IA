@@ -3,6 +3,7 @@
 **Curso:** Programación Intencional con IA Generativa — Universidad CENFOTEC
 **Entrega:** Avance 1 (Semana 2) — Propuesta, Arquitectura y Gobierno
 **Estudiante:** Fabián Villalta Arburola
+**App publicada:** [do-it-taupe.vercel.app](https://do-it-taupe.vercel.app/)
 
 ---
 

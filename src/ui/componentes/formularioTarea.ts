@@ -7,7 +7,15 @@ import type { BorradorTarea, CampoTarea } from '../../domain/validacionTarea';
 import type { Aplicacion } from '../../services/aplicacion';
 import { mostrarAviso, mostrarAvisos } from '../avisos';
 import { el, idUnico } from '../dom';
-import { campoAreaDeTexto, campoEntrada, campoSelector, grupoDeCampos, mostrarErrores, type CampoFormulario } from '../formulario';
+import {
+  campoAreaDeTexto,
+  campoEntrada,
+  campoHora,
+  campoSelector,
+  grupoDeCampos,
+  mostrarErrores,
+  type CampoFormulario,
+} from '../formulario';
 import { icono } from '../iconos';
 import { NOMBRE_PRIORIDAD } from '../textos';
 import { boton } from './boton';
@@ -56,7 +64,7 @@ export function formularioTarea(opciones: OpcionesFormularioTarea): HTMLFormElem
   titulo.contenedor.append(sugerencia);
 
   const fecha = campoEntrada('Fecha', { type: 'date', value: tarea?.fecha ?? opciones.fecha });
-  const horaInicio = campoEntrada('Hora de inicio', { type: 'time', value: tarea?.horaInicio ?? opciones.hora });
+  const horaInicio = campoHora('Hora de inicio', tarea?.horaInicio ?? opciones.hora);
 
   const metaHoras = casillaDeMeta('Horas', tarea ? String(Math.floor(tarea.metaMinutos / 60)) : '');
   const metaMinutos = casillaDeMeta('Minutos', tarea ? String(tarea.metaMinutos % 60) : '');
@@ -140,7 +148,7 @@ export function formularioTarea(opciones: OpcionesFormularioTarea): HTMLFormElem
     titulo: titulo.control.value,
     descripcion: descripcion.control.value,
     fecha: fecha.control.value,
-    horaInicio: horaInicio.control.value,
+    horaInicio: horaInicio.leer(),
     metaHoras: metaHoras.value,
     metaMinutos: metaMinutos.value,
     prioridad: formulario.querySelector<HTMLInputElement>(`input[name="${grupoPrioridad}"]:checked`)?.value ?? '',

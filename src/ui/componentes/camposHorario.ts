@@ -2,7 +2,7 @@
 import { DIAS_SEMANA, type HorarioTrabajo } from '../../domain/modelo';
 import type { BorradorHorario, CampoHorario } from '../../domain/validacionPreferencias';
 import { el } from '../dom';
-import { campoEntrada, grupoDeCampos, type CampoFormulario } from '../formulario';
+import { campoHora, grupoDeCampos, type CampoFormulario } from '../formulario';
 import { DIA_CORTO } from '../textos';
 
 export interface CamposHorario {
@@ -21,8 +21,8 @@ export function camposHorario(leyenda: string, inicial: HorarioTrabajo | null): 
     ),
   );
   const dias = grupoDeCampos('Días de trabajo', casillas, 'grupo--chips');
-  const entrada = campoEntrada('Hora de entrada', { type: 'time', value: inicial?.entrada ?? '' });
-  const salida = campoEntrada('Hora de salida', { type: 'time', value: inicial?.salida ?? '' });
+  const entrada = campoHora('Hora de entrada', inicial?.entrada ?? '');
+  const salida = campoHora('Hora de salida', inicial?.salida ?? '');
 
   const contenedor = el(
     'fieldset',
@@ -37,8 +37,8 @@ export function camposHorario(leyenda: string, inicial: HorarioTrabajo | null): 
     campos: { dias, entrada, salida },
     leer: () => ({
       dias: Array.from(dias.contenedor.querySelectorAll<HTMLInputElement>('input:checked'), (casilla) => casilla.value),
-      entrada: entrada.control.value,
-      salida: salida.control.value,
+      entrada: entrada.leer(),
+      salida: salida.leer(),
     }),
   };
 }

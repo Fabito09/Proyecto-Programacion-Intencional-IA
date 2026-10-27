@@ -95,6 +95,49 @@ export function grupoDeCampos(leyenda: string, controles: Hijo[], claseExtra = '
   return limpiarAlCorregir({ contenedor, enfocable, error });
 }
 
+export interface CampoHora extends CampoFormulario {
+  /** "HH:MM", o '' si falta la hora o los minutos. */
+  leer(): string;
+}
+
+function opcionesNumericas(cantidad: number, seleccionado: string, textoVacio: string): HTMLOptionElement[] {
+  const numeros = Array.from({ length: cantidad }, (_, numero) => String(numero).padStart(2, '0'));
+  return [
+    el('option', { atributos: { value: '', selected: seleccionado === '' } }, textoVacio),
+    ...numeros.map((valor) => el('option', { atributos: { value: valor, selected: valor === seleccionado } }, valor)),
+  ];
+}
+
+/**
+ * RF-UI-07: hora con dos listas finitas (00–23 y 00–59) en lugar del selector circular
+ * del navegador. textoVacio es lo que muestra la opción sin hora ("Ninguno" en recordatorios).
+ */
+export function campoHora(etiqueta: string, valor: string, textoVacio = '--'): CampoHora {
+  const horaInicial = valor.slice(0, 2);
+  const minutoInicial = valor.slice(3, 5);
+  const horas = el(
+    'select',
+    { clase: 'campo__control campo__control--hora', atributos: { 'aria-label': `${etiqueta}: horas` } },
+    ...opcionesNumericas(24, horaInicial, textoVacio),
+  );
+  const minutos = el(
+    'select',
+    { clase: 'campo__control campo__control--hora', atributos: { 'aria-label': `${etiqueta}: minutos` } },
+    ...opcionesNumericas(60, minutoInicial, '--'),
+  );
+  horas.addEventListener('change', () => {
+    if (horas.value === '') minutos.value = '';
+    else if (minutos.value === '') minutos.value = '00';
+  });
+
+  const campo = grupoDeCampos(
+    etiqueta,
+    [horas, el('span', { clase: 'campo-hora__separador', atributos: { 'aria-hidden': 'true' } }, ':'), minutos],
+    'grupo--hora',
+  );
+  return { ...campo, leer: () => (horas.value === '' || minutos.value === '' ? '' : `${horas.value}:${minutos.value}`) };
+}
+
 /** Muestra los errores devueltos por el dominio y enfoca el primero según el orden visual (RF-UI-03). */
 export function mostrarErrores<Campo extends string>(
   campos: Record<Campo, CampoFormulario>,

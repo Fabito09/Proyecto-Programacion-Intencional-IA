@@ -7,6 +7,9 @@ desarrollado con Spec-Driven Development.
 
 **Estudiante:** Fabián Villalta Arburola
 
+**App publicada:** [do-it-taupe.vercel.app](https://do-it-taupe.vercel.app/)
+(Vercel la vuelve a publicar en cada cambio que se sube a `main`).
+
 ## Cómo ejecutarlo
 
 Requiere [Node.js](https://nodejs.org/) 22.12 o superior.

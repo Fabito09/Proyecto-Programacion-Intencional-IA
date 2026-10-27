@@ -1,31 +1,39 @@
-/* RF-EST-08: fondo negro con luces difusas y tenues que se desplazan muy lento.
-   El negro lo pinta html (base.css); esta capa (z-index -1) queda entre el negro y el contenido. */
+/* RF-EST-08: fondo negro con tres luces difusas que viajan a posiciones al azar.
+   El negro lo pinta html (base.css); esta capa (z-index -1) queda entre el negro y el contenido.
+   fondo.ts cambia las variables --luz-*; @property permite que la transición las anime. */
+@property --luz-1-x { syntax: '<percentage>'; inherits: true; initial-value: 78%; }
+@property --luz-1-y { syntax: '<percentage>'; inherits: true; initial-value: 22%; }
+@property --luz-2-x { syntax: '<percentage>'; inherits: true; initial-value: 62%; }
+@property --luz-2-y { syntax: '<percentage>'; inherits: true; initial-value: 80%; }
+@property --luz-3-x { syntax: '<percentage>'; inherits: true; initial-value: 18%; }
+@property --luz-3-y { syntax: '<percentage>'; inherits: true; initial-value: 70%; }
+
+:root {
+  --duracion-luces: 14s;
+  transition:
+    --luz-1-x var(--duracion-luces) ease-in-out,
+    --luz-1-y var(--duracion-luces) ease-in-out,
+    --luz-2-x var(--duracion-luces) ease-in-out,
+    --luz-2-y var(--duracion-luces) ease-in-out,
+    --luz-3-x var(--duracion-luces) ease-in-out,
+    --luz-3-y var(--duracion-luces) ease-in-out;
+}
+
 body::before {
   content: '';
   position: fixed;
-  inset: -25%;
+  inset: 0;
   z-index: -1;
   background:
-    radial-gradient(32% 28% at 78% 22%, rgba(38, 170, 200, 0.2), transparent 70%),
-    radial-gradient(38% 32% at 62% 80%, rgba(225, 110, 35, 0.16), transparent 70%),
-    radial-gradient(30% 26% at 18% 70%, rgba(40, 95, 115, 0.14), transparent 70%);
-  filter: blur(70px);
-  animation: luces-a-la-deriva 45s ease-in-out infinite alternate;
+    radial-gradient(36% 32% at var(--luz-1-x) var(--luz-1-y), rgba(38, 170, 200, 0.34), transparent 70%),
+    radial-gradient(40% 34% at var(--luz-2-x) var(--luz-2-y), rgba(225, 110, 35, 0.28), transparent 70%),
+    radial-gradient(32% 28% at var(--luz-3-x) var(--luz-3-y), rgba(40, 140, 150, 0.24), transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
 }
 
-@keyframes luces-a-la-deriva {
-  from {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-  }
-
-  to {
-    transform: translate3d(-5%, 4%, 0) rotate(10deg) scale(1.08);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  body::before {
-    animation: none;
+  :root {
+    transition: none;
   }
 }

@@ -144,17 +144,21 @@ textarea.campo__control {
   color: var(--rojo);
 }
 
-.campo--recordatorio {
-  position: relative;
+/* RF-UI-07: hora con dos listas finitas. */
+.grupo--hora .grupo__controles {
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
 }
 
-.campo__ninguno {
-  position: absolute;
-  right: 44px;
-  bottom: 12px;
-  font-size: 14px;
+.campo__control--hora {
+  width: auto;
+  min-width: 84px;
+}
+
+.campo-hora__separador {
   color: var(--texto-tenue);
-  pointer-events: none;
+  font-weight: 700;
 }
 
 .fila-campos {

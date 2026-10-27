@@ -1,0 +1,140 @@
+/* RF-UI-06: ajustes para teléfonos (640 px de ancho o menos). */
+@media (max-width: 640px) {
+  /* (a) Encabezado en dos filas: secciones; cronómetro y saludo. */
+  .encabezado {
+    gap: 8px;
+    padding-block: 10px;
+  }
+
+  .encabezado__secciones,
+  .encabezado__derecha {
+    width: 100%;
+  }
+
+  .encabezado__seccion {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .encabezado__derecha {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .cronometro-en-curso {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cronometro-en-curso__titulo {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .encabezado__saludo {
+    white-space: nowrap;
+  }
+
+  /* (b) Controles del calendario agrupados. */
+  .calendario {
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .controles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  .controles > .segmentado,
+  .controles > .navegacion,
+  .controles > .boton {
+    grid-column: 1 / -1;
+  }
+
+  .segmentado__opcion {
+    flex: 1;
+  }
+
+  .control-etiquetado {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .control-etiquetado .selector {
+    width: 100%;
+    min-width: 0;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .navegacion .boton {
+    flex: 1;
+  }
+
+  /* (c) En Día y Horas los botones van debajo del texto de la tarea. */
+  .bloque {
+    flex-direction: column;
+  }
+
+  /* Con botones, el texto no se estira: los botones quedan justo debajo. */
+  .bloque:has(.bloque__acciones) .bloque__abrir {
+    flex-grow: 0;
+  }
+
+  .bloque__acciones {
+    justify-content: flex-start;
+    padding: 0 8px 8px;
+  }
+
+  .bloque__acciones .cronometro {
+    margin-right: auto;
+  }
+
+  /* (d) Semana: días de al menos 110 px y columna de horas fija al deslizar. */
+  .cuadricula {
+    --ancho-horas: 44px;
+    --separacion: 6px;
+  }
+
+  .cuadricula--semana .cuadricula__cabecera,
+  .cuadricula--semana .cuadricula__cuerpo {
+    min-width: calc(var(--ancho-horas) + 7 * 110px + 7 * var(--separacion));
+  }
+
+  .cuadricula__desplazable {
+    scroll-padding-left: calc(var(--ancho-horas) + var(--separacion));
+    scroll-snap-type: x proximity;
+  }
+
+  .cuadricula__columna {
+    scroll-snap-align: start;
+  }
+
+  .cuadricula__horas,
+  .cuadricula__cabecera > :first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .cuadricula__numero {
+    font-size: 16px;
+  }
+
+  .cuadricula__dia-semana {
+    font-size: 14px;
+  }
+
+  .dialogo__contenido {
+    padding: 18px;
+  }
+}
