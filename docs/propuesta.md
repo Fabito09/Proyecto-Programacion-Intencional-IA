@@ -2,7 +2,7 @@
 
 **Curso:** Programación Intencional con IA Generativa — Universidad CENFOTEC
 **Entrega:** Avance 1 (Semana 2) — Propuesta, Arquitectura y Gobierno
-**Equipo:** [Nombre(s) del equipo]
+**Estudiante:** Fabián Villalta Arburola
 
 ---
 
