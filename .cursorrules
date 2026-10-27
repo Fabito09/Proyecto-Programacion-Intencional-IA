@@ -24,7 +24,8 @@ Las decisiones de producto y arquitectura las toma el equipo (Head Chef).
 - HTML + CSS + TypeScript sin framework (sin React, Vue, Angular, jQuery).
 - Persistencia: únicamente `localStorage`, clave `do-it:v1`.
 - APIs del navegador permitidas: DOM, `localStorage`, `Notification`,
-  `crypto.randomUUID`, `Intl`/`Date`.
+  `crypto.randomUUID`, `Intl`/`Date`, `matchMedia` y
+  `requestAnimationFrame` (solo para efectos visuales: RF-EST-07, RF-EST-08).
 - Dependencias de producción: ninguna. Dependencias de desarrollo: solo
   `vite`, `typescript` y `vitest`. Cualquier otra requiere aprobación previa.
 - Prohibido: backend, servicios externos, CDNs, service workers, push,

@@ -81,7 +81,7 @@ sobrevive a recargar la página (F5), incluido un cronómetro en marcha.
 
 La especificación completa está en [requirements.md](../requirements.md), en
 sintaxis EARS (`WHEN … IF … THEN system SHALL …`). Contiene 12 reglas de
-negocio principales y 40 casos de borde verificables. Las más representativas:
+negocio principales y 41 casos de borde verificables. Las más representativas:
 
 - **RN-01:** no se permiten dos tareas abiertas con el mismo título en la misma
   semana.
