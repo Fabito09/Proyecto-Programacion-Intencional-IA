@@ -74,8 +74,18 @@ describe('actualizarRecordatorios (RF-AJU-06)', () => {
     expect(resultado.recordatorios.principal).toEqual({ hora: '10:00', ultimoAviso: null });
   });
 
-  it('una nueva hora que ya pasó conserva el último aviso', () => {
-    const resultado = actualizarRecordatorios(conRecordatorios('08:00', null, HOY), { principal: '09:00', secundario: null }, AHORA);
+  it('CB-41: una hora que ya pasó hoy no avisa hoy y empieza mañana', () => {
+    const preferencias = actualizarRecordatorios(conRecordatorios(null, null), { principal: '08:00', secundario: null }, AHORA);
+    expect(preferencias.recordatorios.principal).toEqual({ hora: '08:00', ultimoAviso: HOY });
+    expect(evaluarRecordatorios(preferencias, [unaTarea()], AHORA).aviso).toBeNull();
+
+    const mananaALas8 = new Date(2026, 9, 24, 8, 0);
+    const manana = [unaTarea({ fecha: '2026-10-24' })];
+    expect(evaluarRecordatorios(preferencias, manana, mananaALas8).aviso).toEqual({ deHoy: 1, deAltaPrioridad: 0, vencidas: 0 });
+  });
+
+  it('una franja cuya hora no cambia conserva su último aviso', () => {
+    const resultado = actualizarRecordatorios(conRecordatorios('08:00', null, HOY), { principal: '08:00', secundario: null }, AHORA);
     expect(resultado.recordatorios.principal.ultimoAviso).toBe(HOY);
   });
 });

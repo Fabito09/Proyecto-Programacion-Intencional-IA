@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.7 (Avance 2)
+- **Versión:** 0.8 (Avance 2)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -402,9 +402,12 @@ mismo paso.
 - **RF-AJU-05** — **WHEN** el usuario guarda los recordatorios **IF** las dos
   casillas tienen la misma hora **THEN** system **SHALL** rechazar el guardado
   y mostrar "Los dos recordatorios no pueden tener la misma hora".
-- **RF-AJU-06** — **WHEN** el usuario cambia la hora de una franja **IF** la
-  nueva hora es posterior a la hora actual **THEN** system **SHALL** poner su
-  `ultimoAviso` en `null`, para que esa franja pueda avisar Hoy.
+- **RF-AJU-06** — **WHEN** el usuario cambia la hora de una franja (también en
+  el primer uso) **IF** la nueva hora es posterior a la hora actual **THEN**
+  system **SHALL** poner su `ultimoAviso` en `null`, para que esa franja pueda
+  avisar Hoy; **IF** la nueva hora es igual o anterior a la hora actual
+  **THEN** system **SHALL** poner su `ultimoAviso` en Hoy, de modo que no avise
+  Hoy y empiece a avisar Mañana.
 - **RF-AJU-07** — **WHEN** el usuario guarda una hora en una franja que estaba
   en "Ninguno" **IF** el navegador soporta notificaciones y el permiso está en
   estado `default` **THEN** system **SHALL** solicitar el permiso de
@@ -534,6 +537,7 @@ Los wireframes están en el lienzo
 | CB-38 | Tarea completada cuyo horario ya pasó | Sin color de alerta ni etiqueta | RN-06 |
 | CB-39 | JSON corrupto o dos cronómetros corriendo en LocalStorage | Mensaje de error; datos no se sobrescriben | RF-PER-03 |
 | CB-40 | LocalStorage lleno al guardar | Mensaje de error; estado anterior intacto | RF-PER-04 |
+| CB-41 | A las 10:00 se configura un recordatorio para las 08:00 | Hoy no avisa; el primer aviso llega Mañana a las 08:00 | RF-AJU-06 |
 
 ## 7. Limitaciones conocidas (decisiones explícitas)
 
@@ -592,3 +596,4 @@ documento:
 | 0.5 | Estilo visual basado en la referencia del cliente, adaptado a cuadrícula de horas en todas las vistas (RF-EST). De la referencia se descartan "Algún día" (tareas sin fecha) y arrastrar tareas. | Pedido del cliente. |
 | 0.6 | La aplicación se llama **Do It** (antes "Mi Semana", nombre provisional). La clave de LocalStorage pasa a `do-it:v1`. | Pedido del cliente. |
 | 0.7 | Precisiones detectadas al implementar: el Resumen del día no cuenta dos veces una tarea vencida de Hoy; RF-TAR-07 define sus mensajes. | Ambigüedad encontrada por la IA (Avance 2). |
+| 0.8 | RF-AJU-06: un recordatorio configurado para una hora que ya pasó empieza a avisar Mañana (antes avisaba en el minuto siguiente). Nuevo CB-41. | Ambigüedad encontrada al probar en el navegador; decisión del cliente. |

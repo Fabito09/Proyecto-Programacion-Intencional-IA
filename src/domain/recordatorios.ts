@@ -76,15 +76,15 @@ export function evaluarRecordatorios(preferencias: Preferencias, tareas: Tarea[]
   return { aviso: resumen, preferencias: marcarAvisadas(preferencias, pendientes, fechaLocal(ahora)) };
 }
 
-/** RF-AJU-06: una franja cuya nueva hora todavía no llegó puede volver a avisar Hoy. */
+/** RF-AJU-06: si la nueva hora todavía no llegó, la franja puede avisar Hoy; si ya pasó, empieza Mañana. */
 export function actualizarRecordatorios(preferencias: Preferencias, horas: HorasRecordatorio, ahora: Date): Preferencias {
   const minutosActuales = minutosDelDia(ahora);
   const recordatorios = { ...preferencias.recordatorios };
   for (const franja of FRANJAS_RECORDATORIO) {
-    const actual = preferencias.recordatorios[franja];
     const nueva = horas[franja];
-    const reiniciar = nueva !== actual.hora && nueva !== null && horaAMinutos(nueva) > minutosActuales;
-    recordatorios[franja] = { hora: nueva, ultimoAviso: reiniciar ? null : actual.ultimoAviso };
+    if (nueva === preferencias.recordatorios[franja].hora) continue;
+    const yaPasoHoy = nueva !== null && horaAMinutos(nueva) <= minutosActuales;
+    recordatorios[franja] = { hora: nueva, ultimoAviso: yaPasoHoy ? fechaLocal(ahora) : null };
   }
   return { ...preferencias, recordatorios };
 }
