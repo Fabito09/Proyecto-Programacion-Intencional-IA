@@ -2,8 +2,8 @@
 import { CRITERIOS_ORDEN, ESTADOS_TAREA, VISTAS_CALENDARIO, type FechaISO, type HoraDelDia, type Tarea } from '../../domain/modelo';
 import { MENSAJES } from '../../domain/mensajes';
 import { esDiaLaboral } from '../../domain/horario';
-import { ordenarTareas } from '../../domain/orden';
-import { estaVencida, finEnMinutos, inicioEnMinutos, sumaDeMetasAbiertas } from '../../domain/tareas';
+import { tareasVencidas } from '../../domain/orden';
+import { finEnMinutos, inicioEnMinutos, sumaDeMetasAbiertas } from '../../domain/tareas';
 import {
   diaDeLaSemana,
   fechaLocal,
@@ -152,7 +152,7 @@ function controles(aplicacion: Aplicacion, control: ControlCalendario): HTMLElem
 function seccionVencidas(aplicacion: Aplicacion, control: ControlCalendario, tareas: Tarea[]): HTMLElement | null {
   const { preferencias, categorias } = aplicacion.obtenerEstado();
   const ahora = aplicacion.ahora();
-  const vencidas = ordenarTareas(tareas.filter((tarea) => estaVencida(tarea, ahora)), preferencias.ordenPreferido);
+  const vencidas = tareasVencidas(tareas, ahora, preferencias.ordenPreferido);
   if (vencidas.length === 0) return null;
 
   const seccion = el(

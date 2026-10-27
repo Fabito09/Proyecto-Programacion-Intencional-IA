@@ -18,6 +18,7 @@ Requiere [Node.js](https://nodejs.org/) 22.12 o superior.
 npm install      # instala Vite, TypeScript y Vitest
 npm run dev      # abre la app en http://localhost:5173
 npm test         # corre las pruebas automáticas
+npm run test:navegador   # recorre la app en Chrome sin ventana (requiere Chrome)
 npm run build    # compila la versión de producción en dist/
 ```
 
@@ -43,4 +44,5 @@ src/
   ui/         Pantallas y componentes en TypeScript, sin framework
   styles/     Hojas de estilo
 tests/        Pruebas de Vitest; cada una cita la regla (RN-xx) o el caso de borde (CB-xx) que cubre
+tests/navegador/  Pruebas de la interfaz en Chrome real, sin dependencias
 ```

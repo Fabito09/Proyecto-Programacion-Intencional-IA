@@ -1,6 +1,6 @@
 // RF-CAL-11: orden de las listas de tareas según el criterio elegido.
 import type { CriterioOrden, Tarea } from './modelo';
-import { RANGO_PRIORIDAD } from './tareas';
+import { estaVencida, RANGO_PRIORIDAD } from './tareas';
 
 type Comparador = (a: Tarea, b: Tarea) => number;
 
@@ -30,4 +30,12 @@ export function ordenarTareas(tareas: Tarea[], criterio: CriterioOrden): Tarea[]
     }
     return 0;
   });
+}
+
+/** RN-05: todas las tareas vencidas, de cualquier semana, en el orden activo. */
+export function tareasVencidas(tareas: Tarea[], ahora: Date, criterio: CriterioOrden): Tarea[] {
+  return ordenarTareas(
+    tareas.filter((tarea) => estaVencida(tarea, ahora)),
+    criterio,
+  );
 }

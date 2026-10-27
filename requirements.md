@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.11 (Semana 4)
+- **Versión:** 0.12 (Semana 4)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -304,8 +304,9 @@ mismo paso.
   `segundosMedidos` los segundos transcurridos desde `cronometroIniciadoEn` y
   poner `cronometroIniciadoEn` en `null`.
 - **RF-CRO-04** — **WHILE** una tarea tiene el cronómetro corriendo, system
-  **SHALL** mostrar en el encabezado de la app "⏱ {título} {H:MM:SS}",
-  actualizado cada segundo, con un botón "Pausar".
+  **SHALL** mostrar en el encabezado de la app un ícono de reloj, el título de
+  la tarea y su tiempo en formato "H:MM:SS", actualizado cada segundo, con un
+  botón "Pausar".
 - **RF-CRO-05** — **WHEN** la app se cierra o se recarga con un cronómetro
   corriendo, system **SHALL** seguir contando ese tiempo, porque el tiempo se
   calcula desde `cronometroIniciadoEn` y no desde un contador en memoria (sujeto
@@ -493,8 +494,9 @@ Los wireframes están en el lienzo
 [Do It — Wireframes](https://claude.ai/artifact/MRYwG8ndzKNhKDxhsibYgp).
 
 - **RF-EST-01** — La interfaz **SHALL** usar tema oscuro: fondo negro (con las
-  luces de RF-EST-08), texto blanco, líneas divisorias finas en gris, sin
-  sombras ni tarjetas con borde.
+  luces de RF-EST-08), texto blanco, líneas divisorias finas en gris y sin
+  sombras. Los bordes finos grises solo **SHALL** usarse para delimitar
+  tarjetas, diálogos, avisos, botones y campos.
 - **RF-EST-02** — El encabezado del calendario **SHALL** mostrar el mes y el año
   en tipografía grande y gruesa, seguidos del número de semana ISO en gris
   ("Octubre 2026 S43"), y a la derecha los botones redondos de navegación.
@@ -594,6 +596,11 @@ Los wireframes están en el lienzo
   corta al final de la jornada).
 - **Un navegador, un usuario:** los datos no se sincronizan entre dispositivos
   ni navegadores.
+- **Publicación:** la app se publica como sitio estático en Vercel
+  ([do-it-taupe.vercel.app](https://do-it-taupe.vercel.app/)). Vercel solo
+  entrega los archivos compilados: no hay servidor propio ni base de datos, y
+  los datos siguen guardándose en el navegador de cada persona, así que no
+  contradice la sección 8.
 
 ## 8. Fuera de alcance
 
@@ -649,3 +656,4 @@ documento:
 | 0.10 | Nuevo RF-UI-07: los campos de hora usan listas finitas (00–23, 00–59) en vez del selector circular del navegador. | Pedido del cliente ("que choque como con una pared"). |
 | 0.11 | Nuevo RF-EST-09: el foco de los campos se marca con su línea o borde, sin el recuadro morado; el autocompletado no cambia los colores. | Pedido del cliente. |
 | 0.11 | Wireframes actualizados para coincidir con la app (tipografía, luces del fondo, campos de hora y textos). | Pedido del cliente. |
+| 0.12 | RF-EST-01 decía "sin tarjetas con borde", pero los wireframes aprobados y la app sí las usan: se precisa dónde van los bordes y se quitan las sombras que quedaban. RF-CRO-04 describe un ícono de reloj en vez de un emoji. Se documenta la publicación en Vercel (sección 7). | Inconsistencias detectadas en la revisión final contra el enunciado; decisión del cliente. |

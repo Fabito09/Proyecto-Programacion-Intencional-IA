@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { crearTarea, reabrirTarea } from '../../src/domain/cicloDeVida';
 import { tareasFueraDelHorario } from '../../src/domain/horario';
-import { ordenarTareas } from '../../src/domain/orden';
+import { ordenarTareas, tareasVencidas } from '../../src/domain/orden';
 import { numeroDeSemanaISO, formatearDuracion, formatearCronometro, mismaSemana } from '../../src/domain/tiempo';
 import { AHORA, HORARIO_LV_8_17, unaTarea } from '../fabricas';
 
@@ -20,6 +20,17 @@ describe('ordenarTareas (RF-CAL-11)', () => {
 
   it('por meta más corta', () => {
     expect(ordenarTareas([altaTarde, altaTemprano, baja], 'meta')).toEqual([baja, altaTemprano, altaTarde]);
+  });
+});
+
+describe('tareasVencidas (RN-05)', () => {
+  it('reúne las vencidas de cualquier semana, sin completadas ni pendientes a futuro, en el orden activo', () => {
+    const deLaSemanaPasada = unaTarea({ titulo: 'Semana pasada', fecha: '2026-10-14', prioridad: 'baja' });
+    const deHoyYaTerminada = unaTarea({ titulo: 'Hoy 8:00', horaInicio: '08:00', metaMinutos: 60, prioridad: 'alta' });
+    const completada = unaTarea({ fecha: '2026-10-20', estado: 'completada' });
+    const deEstaTarde = unaTarea({ horaInicio: '13:00' });
+    const resultado = tareasVencidas([deLaSemanaPasada, completada, deEstaTarde, deHoyYaTerminada], AHORA, 'prioridad');
+    expect(resultado).toEqual([deHoyYaTerminada, deLaSemanaPasada]);
   });
 });
 

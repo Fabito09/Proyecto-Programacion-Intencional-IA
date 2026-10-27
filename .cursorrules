@@ -43,7 +43,9 @@ src/
   ui/         Renderizado y eventos del DOM. No contiene reglas de negocio.
   styles/     Hojas CSS.
   main.ts     Punto de entrada: solo conecta las capas.
-tests/        Pruebas de vitest para domain/ y services/.
+tests/        Pruebas de vitest para domain/, storage/ y services/.
+tests/navegador/  Pruebas de la interfaz en Chrome real, sin dependencias
+              (protocolo DevTools con las APIs de Node).
 ```
 
 - Las dependencias van en una sola dirección: `ui → services → domain`,
@@ -83,8 +85,9 @@ tests/        Pruebas de vitest para domain/ y services/.
 ## 6. Calidad
 
 - Cada regla `RN-xx` y cada caso de borde `CB-xx` debe tener al menos una
-  prueba en `tests/`.
-- `npm run build` y `npm test` deben pasar antes de dar una tarea por
-  terminada.
+  prueba en `tests/`. Lo que depende del navegador (foco, permisos,
+  desplazamiento, diseño en teléfono) va en `tests/navegador/`.
+- `npm run build`, `npm test` y, si se tocó la interfaz,
+  `npm run test:navegador` deben pasar antes de dar una tarea por terminada.
 - Al terminar, resumí: qué requisitos implementaste, qué archivos tocaste y
   qué dudas de la especificación encontraste.
