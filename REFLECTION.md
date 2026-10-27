@@ -17,7 +17,7 @@ commit cita los requisitos que implementa.
 | Dimensión | Visión inicial en mi mente (Semana 1) | Especificación entregada a la IA (`requirements.md`) | Resultado real generado por la IA (Semana 4) | Nivel de satisfacción |
 |---|---|---|---|---|
 | **Lógica de negocio** | Un organizador **no invasivo y sencillo** para las personas a las que les cuesta mantener el orden: ordenar tareas por tiempo, prioridad y semana, con notificaciones a la hora que el usuario elija. Me imaginaba algo más simple. | 12 reglas EARS (RN-01 a RN-12). Ejemplo, RN-02: *"WHEN el reloj local alcanza la hora de una franja IF esa franja está configurada, su `ultimoAviso` es distinto de Hoy y existe al menos una tarea abierta de Hoy o una tarea vencida THEN system SHALL mostrar un único aviso con el Resumen del día (nunca un aviso por tarea)…"* | Las 12 reglas implementadas y cubiertas por 104 pruebas automáticas. La app terminó siendo más completa que la idea inicial: horario de trabajo, cronómetro por tarea, meta sugerida para tareas repetidas y bloques "+N" para tareas que chocan. Los recordatorios quedaron como yo quería: el usuario elige la hora y no suenan como un despertador. | **Muy satisfecho** |
-| **Experiencia de usuario (UI/UX)** | Algo **súper sencillo**, que no se veía como quedó al final. | [Wireframes de 9 pantallas](docs/wireframes/index.html) y los requisitos RF-EST-01 a RF-EST-06: tema oscuro minimalista basado en una referencia aportada por la clienta y adaptado a una cuadrícula por horas. RN-08 pide que las tareas superpuestas no se dibujen apretadas como en Google Calendar. | Interfaz fiel a los wireframes en las tres vistas (Horas, Día y Semana), usable a 360 px de ancho. La única diferencia visible es la tipografía: se usa la del sistema porque `.cursorrules` prohíbe cargar recursos externos como Google Fonts. | **Satisfecho** |
+| **Experiencia de usuario (UI/UX)** | Algo **súper sencillo**, que no se veía como quedó al final. | [Wireframes de 9 pantallas](docs/wireframes/index.html) y los requisitos RF-EST-01 a RF-EST-06: tema oscuro minimalista basado en una referencia aportada por la clienta y adaptado a una cuadrícula por horas. RN-08 pide que las tareas superpuestas no se dibujen apretadas como en Google Calendar. | Interfaz fiel a los wireframes en las tres vistas (Horas, Día y Semana), usable a 360 px de ancho. La tipografía es la del sistema porque `.cursorrules` prohíbe cargar recursos externos como Google Fonts. En la Semana 4 se sumaron, a pedido mío, un brillo azul en los bordes cerca del cursor (RF-EST-07) y luces difusas sobre el fondo negro (RF-EST-08), sin cambiar la base oscura. | **Satisfecho** |
 | **Persistencia de datos** | No le presté mucha atención; pensaba que la base de datos y el hosting son de lo último que se hace al publicar algo en internet. | Interfaces TypeScript en [src/domain/modelo.ts](src/domain/modelo.ts) (`Categoria` 1→N `Tarea`, `Preferencias`, `EstadoPersistido`) y los requisitos RF-PER-01 a RF-PER-05: LocalStorage con la clave `do-it:v1`. Backend y nube quedaron explícitamente fuera de alcance. | Todo el estado se guarda en LocalStorage y sobrevive a recargar la página (F5), incluso un cronómetro en marcha y el paso del primer uso. Si los datos guardados se dañan, no se sobrescriben (CB-39). Si el navegador no puede guardar, la app vuelve exactamente a como estaba (CB-40). | **Satisfecho** |
 
 ### Análisis de las brechas
@@ -31,7 +31,13 @@ commit cita los requisitos que implementa.
   escrita en RF-EST. En lo personal mis diseños son más maximalistas, que es
   algo que se usa mucho hoy. La IA siguió la especificación y no mi gusto
   personal, que es lo correcto: si quiero otro estilo, primero tengo que
-  cambiar la especificación.
+  cambiar la especificación. Eso fue lo que hice en la Semana 4: para acercar
+  el diseño a mi gusto pedí el brillo en los bordes y las luces del fondo,
+  pero primero los escribí como RF-EST-07 y RF-EST-08 (versión 0.9) y recién
+  después la IA los implementó. Mantuve el fondo negro porque una versión más
+  clara no me gustó. Además, la IA los hizo solo con CSS, porque
+  `.cursorrules` no permite agregar la librería de shaders que usaba la
+  referencia.
 - **Persistencia: lo que falta fue una decisión consciente, no un olvido.** La
   base de datos y el hosting están en "Fuera de alcance" para que el proyecto
   entrara en tres semanas. Esa misma decisión explica la principal limitación

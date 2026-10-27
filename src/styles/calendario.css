@@ -98,7 +98,9 @@
   top: 0;
   z-index: 3;
   padding-bottom: 10px;
-  background: var(--fondo);
+  /* Deja ver las luces del fondo sin mezclar el texto que pasa por debajo. */
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
 }
 
 /* RF-EST-03 */

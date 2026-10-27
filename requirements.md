@@ -4,7 +4,7 @@ Contrato de requerimientos de la aplicación. Es la **única fuente de verdad**:
 todo comportamiento del sistema debe poder rastrearse a un identificador de este
 documento. Lo que no está escrito aquí no se implementa.
 
-- **Versión:** 0.8 (Avance 2)
+- **Versión:** 0.9 (Semana 4)
 - **Modelo de datos:** [src/domain/modelo.ts](src/domain/modelo.ts)
 - **Reglas de gobierno de la IA:** [.cursorrules](.cursorrules)
 
@@ -477,8 +477,9 @@ minimalista de fondo negro), adaptada a la cuadrícula de horas de esta app.
 Los wireframes están en el lienzo
 [Do It — Wireframes](https://claude.ai/artifact/MRYwG8ndzKNhKDxhsibYgp).
 
-- **RF-EST-01** — La interfaz **SHALL** usar tema oscuro: fondo negro, texto
-  blanco, líneas divisorias finas en gris, sin sombras ni tarjetas con borde.
+- **RF-EST-01** — La interfaz **SHALL** usar tema oscuro: fondo negro (con las
+  luces de RF-EST-08), texto blanco, líneas divisorias finas en gris, sin
+  sombras ni tarjetas con borde.
 - **RF-EST-02** — El encabezado del calendario **SHALL** mostrar el mes y el año
   en tipografía grande y gruesa, seguidos del número de semana ISO en gris
   ("Octubre 2026 S43"), y a la derecha los botones redondos de navegación.
@@ -492,6 +493,21 @@ Los wireframes están en el lienzo
 - **RF-EST-06** — Un bloque de tarea **SHALL** tener fondo gris muy oscuro,
   el título en blanco (salvo la señalización de RN-06) y su categoría como
   píldora de RF-EST-05, para mantener legible el texto sobre fondo negro.
+- **RF-EST-07** — **WHILE** el cursor del mouse se mueve sobre la página,
+  system **SHALL** iluminar levemente, con el azul de acento, la parte del
+  borde más cercana al cursor (en un radio de unos 160 px) de los bloques de
+  tarea, tarjetas, diálogos, filas de listas, botones, chips, controles
+  segmentados y avisos. **IF** el dispositivo no tiene mouse (pantalla táctil)
+  **THEN** system **SHALL** no mostrar el efecto. Los campos de texto y las
+  listas desplegables no llevan el efecto.
+- **RF-EST-08** — El fondo **SHALL** seguir siendo negro, con luces difusas y
+  tenues (cian arriba a la derecha y naranja abajo) que se desplazan muy
+  lentamente, inspiradas en una referencia de fondo tipo shader aportada por
+  el cliente. Las luces **SHALL** ser lo bastante oscuras para que el texto
+  blanco mantenga su contraste, y **IF** el sistema del usuario pide reducir el
+  movimiento **THEN** system **SHALL** mostrarlas quietas.
+- **Nota:** los wireframes de [docs/wireframes/](docs/wireframes/index.html)
+  son anteriores a RF-EST-07 y RF-EST-08 y no muestran esos efectos.
 
 ---
 
@@ -600,3 +616,5 @@ documento:
 | 0.7 | Precisiones detectadas al implementar: el Resumen del día no cuenta dos veces una tarea vencida de Hoy; RF-TAR-07 define sus mensajes. | Ambigüedad encontrada por la IA (Avance 2). |
 | 0.8 | RF-AJU-06: un recordatorio configurado para una hora que ya pasó empieza a avisar Mañana (antes avisaba en el minuto siguiente). Nuevo CB-41. | Ambigüedad encontrada al probar en el navegador; decisión del cliente. |
 | 0.8 | RN-12 y RF-AJU-03 definen su texto en singular ("La última vez…", "1 tarea queda…"). | Error de redacción detectado al probar; decisión del cliente. |
+| 0.9 | Nuevo RF-EST-07: los bordes se iluminan levemente en azul cerca del cursor. | Pedido del cliente (referencia visual). |
+| 0.9 | Nuevo RF-EST-08: fondo negro con luces difusas en movimiento lento, estilo más maximalista. | Pedido del cliente (referencia visual; el fondo debe seguir siendo negro). |

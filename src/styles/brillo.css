@@ -1,0 +1,67 @@
+/* RF-EST-07: borde que se ilumina levemente cerca del cursor.
+   El degradado se fija a la ventana (background-attachment: fixed), así que una sola
+   posición del mouse ilumina a la vez todos los bordes cercanos. La máscara deja ver
+   solo el anillo de 1 px del borde. */
+:root {
+  --brillo-x: -1000px;
+  --brillo-y: -1000px;
+  --brillo-radio: 160px;
+  --brillo-color: rgba(111, 124, 255, 0.75);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* El ::after se ubica sobre su elemento. .bloque (absoluto) y .dialogo (capa superior
+     del navegador) ya están posicionados y no se tocan. */
+  :is(
+      .tarjeta,
+      .fila-tarea,
+      .lista-simple__fila,
+      .vacio,
+      .boton,
+      .boton-redondo,
+      .segmentado,
+      .grupo--segmentado .grupo__controles,
+      .chip,
+      .aviso,
+      .cronometro-en-curso
+    ) {
+    position: relative;
+  }
+
+  :is(
+      .bloque,
+      .tarjeta,
+      .dialogo,
+      .fila-tarea,
+      .lista-simple__fila,
+      .vacio,
+      .boton,
+      .boton-redondo,
+      .segmentado,
+      .grupo--segmentado .grupo__controles,
+      .chip,
+      .aviso,
+      .cronometro-en-curso
+    )::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(
+        var(--brillo-radio) circle at var(--brillo-x) var(--brillo-y),
+        var(--brillo-color),
+        transparent 70%
+      )
+      fixed;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+}

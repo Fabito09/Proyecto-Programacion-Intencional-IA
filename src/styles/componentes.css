@@ -477,7 +477,8 @@ textarea.campo__control {
   padding: 0;
   border: 1px solid var(--linea-fuerte);
   border-radius: 16px;
-  background: var(--fondo);
+  background: rgba(8, 8, 8, 0.9);
+  backdrop-filter: blur(18px);
   color: var(--texto);
 }
 

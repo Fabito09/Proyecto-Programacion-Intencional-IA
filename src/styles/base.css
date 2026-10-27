@@ -43,10 +43,14 @@
   box-sizing: border-box;
 }
 
+/* El negro va en html; body queda transparente para que se vean las luces de fondo.css. */
+html {
+  background: var(--fondo);
+}
+
 html,
 body {
   margin: 0;
-  background: var(--fondo);
   color: var(--texto);
   font-family: var(--fuente);
   line-height: 1.45;

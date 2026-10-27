@@ -1,0 +1,31 @@
+/* RF-EST-08: fondo negro con luces difusas y tenues que se desplazan muy lento.
+   El negro lo pinta html (base.css); esta capa (z-index -1) queda entre el negro y el contenido. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  background:
+    radial-gradient(32% 28% at 78% 22%, rgba(38, 170, 200, 0.2), transparent 70%),
+    radial-gradient(38% 32% at 62% 80%, rgba(225, 110, 35, 0.16), transparent 70%),
+    radial-gradient(30% 26% at 18% 70%, rgba(40, 95, 115, 0.14), transparent 70%);
+  filter: blur(70px);
+  animation: luces-a-la-deriva 45s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes luces-a-la-deriva {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+
+  to {
+    transform: translate3d(-5%, 4%, 0) rotate(10deg) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
